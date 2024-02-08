@@ -1,0 +1,138 @@
+{
+  "Users": [
+    {
+      "UserName": "Mable",
+      "FullName": "Mable",
+      "VoterId": "mab123",
+      "Address": "Nostrud aliquip cupidatat",
+      "Photo": null,
+      "IsApproved": false,
+      "HasVoted": false      
+    },
+    {
+      "UserName": "Dionne",
+      "FullName": "Dionne",
+      "VoterId": "dio123",
+      "Address": "Nostrud aliquip cupidatat",
+      "Photo": null,
+      "IsApproved": false,
+      "HasVoted": false      
+    },
+    {
+      "UserName": "Sondra",
+      "FullName": "Sondra",
+      "VoterId": "son123",
+      "Address": "Nostrud aliquip cupidatat",
+      "Photo": null,
+      "IsApproved": false,
+      "HasVoted": false      
+    },
+    {
+      "UserName": "Clarissa",
+      "FullName": "Clarissa",
+      "VoterId": "cla123",
+      "Address": "Nostrud aliquip cupidatat",
+      "Photo": null,
+      "IsApproved": false,
+      "HasVoted": false      
+    },
+    {
+      "UserName": "Stacie",
+      "FullName": "Stacie",
+      "VoterId": "sta123",
+      "Address": "Nostrud aliquip cupidatat",
+      "Photo": null,
+      "IsApproved": false,
+      "HasVoted": false      
+    },
+    {
+        "UserName": "Robbins",
+        "FullName": "Robbins",
+        "VoterId": "rob123",
+        "Address": "Nostrud aliquip cupidatat",
+        "Photo": null,
+        "IsApproved": false,
+        "HasVoted": false      
+      },
+      {
+        "UserName": "Hurley",
+        "FullName": "Hurley",
+        "VoterId": "hur123",
+        "Address": "Nostrud aliquip cupidatat",
+        "Photo": null,
+        "IsApproved": false,
+        "HasVoted": false      
+      },
+      {
+        "UserName": "Bean",
+        "FullName": "Bean",
+        "VoterId": "bea123",
+        "Address": "Nostrud aliquip cupidatat",
+        "Photo": null,
+        "IsApproved": false,
+        "HasVoted": false      
+      },
+      {
+        "UserName": "Newton",
+        "FullName": "Newton",
+        "VoterId": "new123",
+        "Address": "Nostrud aliquip cupidatat",
+        "Photo": null,
+        "IsApproved": false,
+        "HasVoted": false      
+      },
+      {
+        "UserName": "Collins",
+        "FullName": "Collins",
+        "VoterId": "col123",
+        "Address": "Nostrud aliquip cupidatat",
+        "Photo": null,
+        "IsApproved": false,
+        "HasVoted": false      
+      }
+  ],
+  "Parties": [
+    {
+      "Name": "BJP",
+      "SymbolId": 2
+    },
+    {
+      "Name": "Congress",
+      "SymbolId": 4
+    },
+    {
+      "Name": "BSP",
+      "SymbolId": 1
+    },
+    {
+      "Name": "CPI",
+      "SymbolId": 3
+    },
+    {
+      "Name": "NCP",
+      "SymbolId": 5
+    },
+    {
+      "Name": "CPM",
+      "SymbolId": 6
+    }
+  ],
+  "MPSeats": [
+    {
+      "State": "Tamilnadu",
+      "NumberOfSeats": 41    
+    },
+    {
+      "State": "Kerala",
+      "NumberOfSeats": 32    
+    },
+    {
+      "State": "AndhraPradesh",
+      "NumberOfSeats": 25    
+    },
+    {
+      "State": "Karnataka",
+      "NumberOfSeats": 32    
+    }
+  ]
+}
