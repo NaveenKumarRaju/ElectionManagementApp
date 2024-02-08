@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "abe9cb36-8fac-4991-9895-346aa91a3d61",
+		"name": "ElectionManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login as Admin and Save token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const user = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Has properties\", function () {\r",
+							"    pm.expect(user).to.have.property('username');\r",
+							"    pm.expect(user).to.have.property('token');\r",
+							"});\r",
+							"\r",
+							"if (pm.test(\"Has properties\")) {\r",
+							"    pm.globals.set('token', user.token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n\t\"password\": \"Pa$$w0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/account/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as Voter and Save token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const user = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Has properties\", function () {\r",
+							"    pm.expect(user).to.have.property('username');\r",
+							"    pm.expect(user).to.have.property('token');\r",
+							"});\r",
+							"\r",
+							"if (pm.test(\"Has properties\")) {\r",
+							"    pm.globals.set('voter_token', user.token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\r\n    \"username\": \"naveen\",\r\n\t\"password\": \"Test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/account/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"naveen\",\r\n    \"fullName\": \"naveen\",\r\n    \"voterId\": \"nav2123\",\r\n    \"address\": \"Nostrud aliquip cupidatat\",\r\n    \"photo\": \"\",\r\n    \"password\": \"Test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/account/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetVoters as admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/voters",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"voters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetVoters as Voter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{voter_token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/voters",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"voters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterCandidate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"voterId\": \"nav2123\",\r\n  \"appUserId\": 12,\r\n  \"partyId\": 1,\r\n  \"state\": \"Tamilnadu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/register-candidate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"register-candidate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Party",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"naveenparty\",\r\n  \"symbolId\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/register-party",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"register-party"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Party",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"naveenparty\",\r\n  \"symbolId\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/register-party",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"register-party"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Voter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/voters/approve/12",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"voters",
+						"approve",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MPSeats",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n  \"numberOfSeats\": 44,\r\n  \"state\": \"Tamilnadu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/update/mp-seat",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"update",
+						"mp-seat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update MPSeat",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/candidates",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"candidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Candidates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/candidates",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"candidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Result",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/result",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cast Vote",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{voter_token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"candidateId\": 1,\r\n  \"partyId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/electionmanagement/voters/cast-vote",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"electionmanagement",
+						"voters",
+						"cast-vote"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5000",
+			"type": "default"
+		}
+	]
+}
